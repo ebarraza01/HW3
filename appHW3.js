@@ -4,7 +4,13 @@ app.set( 'view engine', 'pug'); // set engine
 app.set( 'views', 'views'); // set views
 const shopRoutes =require('./routes/shopHub')
 const db = require("./util/cDataBase");
-db.execute( "select * from customer")
+db.execute( "SELECT DATE_FORMAT(SalesDate, '%Y-%m-%d') AS SalesDate," +
+    " c.CustomerName, i.ItemName, s.Quantity, (i.ItemPrice * s.Quantity) AS TotalSales " +
+    "FROM Sales s JOIN customer c " +
+    "ON s.CustomerID = c.CustomerID JOIN item i " +
+    "ON s.ItemID = i.ItemID WHERE MONTH(SalesDate) = MONTH(CURDATE()) " +
+    "AND YEAR(SalesDate) = YEAR(CURDATE()) " +
+    "ORDER BY SalesDate, c.CustomerName")
     .then(result => {
         console.log("Res=")
         console.log(result)
