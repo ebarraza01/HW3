@@ -1,0 +1,59 @@
+head
+    title  Happy Harry's Hardware
+    link(href='/css/bootstrap.css' rel='stylesheet')
+    script(src='/js/bootstrap.js' type='application/javascript')
+// Navigation
+nav.navbar.navbar-expand-lg.navbar.bg-info.static-top
+    .container-fluid.m-3
+        a.navbar-brand(href='#')
+            img(src='img/Harry.png' alt='Harry' height='100')
+        #navbarSupportedContent.collapse.navbar-collapse
+            h3.text-white.ms-auto Happy Harry's Hardware
+            ul.navbar-nav.ms-auto
+                if from == 'home'
+                    li.me-3.bg-warning
+                        a.nav-link.active(href='/home') Home
+                    li.me-3.bg-warning
+                        a.nav-link(href='/cust') Customers
+                    li.me-3.bg-warning
+                        a.nav-link(href='/products') Products
+                    li.me-3.bg-warning
+                        a.nav-link(href='/sales') Sales
+                else if from == 'cust'
+                    li.me-3.bg-warning
+                        a.nav-link(href='/home') Home
+                    li.me-3.bg-warning
+                        a.nav-link.active(href='/cust') Customers
+                    li.me-3.bg-warning
+                        a.nav-link(href='/products') Products
+                    li.me-3.bg-warning
+                        a.nav-link(href='/sales') Sales
+                else if from == 'products'
+                    li.me-3.bg-warning
+                        a.nav-link(href='/home') Home
+                    li.me-3.bg-warning
+                        a.nav-link(href='/cust') Customers
+                    li.me-3.bg-warning
+                        a.nav-link.active(href='/products') Products
+                    li.me-3.bg-warning
+                        a.nav-link(href='/sales') Sales
+                else if from == 'sales'
+                    li.me-3.bg-warning
+                        a.nav-link(href='/home') Home
+                    li.me-3.bg-warning
+                        a.nav-link(href='/cust') Customers
+                    li.me-3.bg-warning
+                        a.nav-link(href='/products') Products
+                    li.me-3.bg-warning
+                        a.nav-link.active(href='/sales') Sales
+                else
+                    li.me-3.bg-warning
+                        a.nav-link(href='/home') Home
+                    li.me-3.bg-warning
+                        a.nav-link(href='/cust') Customers
+                    li.me-3.bg-warning
+                        a.nav-link(href='/products') Products
+                    li.me-3.bg-warning
+                        a.nav-link(href='/sales') Sales
+
+body.bg-warning
