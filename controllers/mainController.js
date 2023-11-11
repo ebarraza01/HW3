@@ -14,6 +14,21 @@ exports.products = (req, res, next) => {
             from: 'products'
         })
 }
+exports.getAddProduct = (req, res, next) => {
+    res.render('addProduct',
+        {
+            from: 'addProduct'
+        })
+}
+exports.postAddProduct = (req, res, next) => {
+    let id = req.body.ItemID;
+    let n = req.body.ItemName;
+    let p = req.body.ItemPrice;
+    const customer = new products(id, n, p);
+    customer.save()
+
+    res.redirect('/cust')
+}
 
 exports.sales = (req, res, next) => {
     // sales.findByMonth( sList => {
@@ -25,8 +40,6 @@ exports.sales = (req, res, next) => {
     res.render('sales', {
         from: 'sales',
     })
-
-
 }
 exports.cust = (req, res, next) => {
     // customers.fetchAll(cList => {
@@ -45,22 +58,31 @@ exports.getAddCustomer = (req, res, next) => {
         from: 'addCust'
     })
 }
+exports.postAddCustomer = (req, res, next) => {
+    let id = req.body.CustomerID;
+    let n = req.body.CustomerName;
+    let email = req.body.CustomerEmail;
+    const customer = new customers(id, n, email);
+    customer.save()
+
+    res.redirect('/cust')
+
+}
 exports.getUpdateCustomer = (req, res, next) => {
     let id = req.params.id;
     let c = customers.findById(id)
     res.render('updateCust', {
-        title: `Update record:${id} `,
         from: 'updateCust',
         customer : c
     })
 }
 
 exports.postUpdateCustomer = (req, res, next) => {
-    let t = req.body.CustomerID;
-    let a = req.body.CustomerName;
-    let p = req.body.CustomerEmail;
-    const customer = new customers(t, a, p);
-    customer.save()
+    let id = req.body.CustomerID;
+    let n = req.body.CustomerName;
+    let email = req.body.CustomerEmail;
+    const customer = new customers(id, n, email);
+    customer.update()
 
     res.redirect('/cust')
 

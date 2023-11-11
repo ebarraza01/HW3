@@ -1,1 +1,16 @@
 include layouts/mainLayout
+.container
+    div.mt-3
+        h1 Add New Product
+    div.mt-2
+        form(action='/postAddProduct' method='post')
+            .form-group
+                label(for='itemID') Product ID
+                input.form-control(type='text' id='itemID' name='Product ID' placeholder='Enter ID')
+            .form-group
+                label(for='ItemName') Product
+                input.form-control(type='text' id='ItemName' name='Product Name' placeholder='Enter Product')
+            .form-group
+                label(for='ItemPrice') Price
+                input.form-control(type='text' id='ItemPrice' name='Price' placeholder='Enter Price')
+            button.btn.btn-primary.mt-5.ms-5(type='submit') Submit

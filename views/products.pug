@@ -17,5 +17,8 @@ include layouts/mainLayout
                         tr
                             td= p.ItemName
                             td= p.TotalSales
-
-        button.ms-5(type='submit' class='btn btn-secondary') Insert New Product
+                            td
+                                form( method='get' action='/updateProduct' + p.id )
+                                    button( type='submit' class='btn btn-primary') Update
+        form(method='get' action='/addProduct')
+            button.ms-5(type='submit' class='btn btn-secondary') Insert New Product
