@@ -1,0 +1,16 @@
+include layouts/mainLayout
+.container
+    div.mt-3
+        h1 Add New Customer
+    div.mt-2
+        form(action='/' method='post')
+            .form-group
+                label(for='custName') Customer Name
+                input.form-control(type='text' id='custName' name='Customer Name' placeholder='Enter Name')
+            .form-group
+                label(for='custEmail') Customer Email
+                input.form-control(type='text' id='custEmail' name='Customer Email' placeholder='Enter Email')
+            .form-group
+                label(for='custID') Customer ID
+                input.form-control(type='text' id='custID' name='Customer ID' placeholder='Enter ID')
+            button.btn.btn-primary.mt-5.ms-5(type='submit') Submit

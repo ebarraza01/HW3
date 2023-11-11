@@ -1,19 +1,19 @@
 include layouts/mainLayout
 .container.mt-5
     div(style={ margin: '0 5% 5% 5%', padding: '2%'})
-        table#salesTable
+        table.table.table-striped
             thead
                 tr
-                    th Sales Date
-                    th Customer Name
-                    th Total Sales
-                    th Item Name
-                    th Item Quantity
-            //tbody
-            //    each s in sList
-            //        tr
-            //            td= s.SalesDate
-            //            td= s.CustomerName
-            //            td= s.TotalSales
-            //            td= s.ItemName
-            //            td= s.ItemQuantity
+                    th.border.bg-info.text-light Sales Date
+                    th.border.bg-info.text-light Customer
+                    th.border.bg-info.text-light Product
+                    th.border.bg-info.text-light Quantity
+                    th.border.bg-info.text-light Total Sales
+            tbody
+                // each s in sList
+                //     tr
+                //         td= s.SalesDate
+                //         td= s.CustomerName
+                //         td= s.ItemName
+                //         td= s.Quantity
+                //         td= s.totalSales

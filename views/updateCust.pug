@@ -1,0 +1,16 @@
+include layouts/mainLayout
+.container
+    h1.mt-3
+    div.mt-3
+        h1 Update Existing Customer
+    div.mt-2
+        form(action='/postUpdateCustomer' method='post')
+            .form-group
+                input.form-control(type='hidden' name='productId' value= customer.CustomerID  )
+            .form-group
+                label(for='CustName') Name
+                input.form-control(type='text' id='CustName' name='Name' value= customer.CustomerName placeholder='Name')
+            .form-group
+                label(for='CustEmail') Email
+                input.form-control(type='text' id='CustEmail' name='Email' value= customer.CustomerEmail placeholder='Email')
+            button.btn.btn-primary(type='submit') Update This Record

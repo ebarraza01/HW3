@@ -14,13 +14,17 @@ module.exports = class Sales {
     }
     
     static findByMonth() {
-        return db.execute("SELECT DATE_FORMAT(SalesDate, '%Y-%m-%d') AS SalesDate," +
+        let sList;
+        console.log("IN FINDBYMONTH")
+        sList = db.execute("SELECT DATE_FORMAT(SalesDate, '%Y-%m-%d') AS SalesDate," +
             " c.CustomerName, i.ItemName, s.Quantity, (i.ItemPrice * s.Quantity) AS TotalSales " +
             "FROM Sales s JOIN customer c " +
             "ON s.CustomerID = c.CustomerID JOIN item i " +
             "ON s.ItemID = i.ItemID WHERE MONTH(SalesDate) = MONTH(CURDATE()) " +
             "AND YEAR(SalesDate) = YEAR(CURDATE()) " +
             "ORDER BY SalesDate, c.CustomerName")
+        console.log("FINDBYMONTH IS DONE")
+        return sList
     }
 
     static fetchTop5() {

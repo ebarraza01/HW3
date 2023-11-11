@@ -1,4 +1,4 @@
-const db = require( "../util/cDataBase");
+const db = require("../util/cDataBase");
 
 module.exports = class Customer {
     constructor(id, custName, custEmail) {
@@ -6,26 +6,38 @@ module.exports = class Customer {
         this.CustomerName = custName;
         this.CustomerEmail = custEmail;
     }
+
+
+    static fetchAll() {
+        return db.execute("SELECT" +
+            "        c.CustomerName," +
+            "            c.CustomerEmail," +
+            "            SUM(i.ItemPrice * s.Quantity) AS TotalSales" +
+            "        FROM" +
+            "        customer c" +
+            "        JOIN" +
+            "        Sales s ON c.CustomerID = s.CustomerID" +
+            "        JOIN" +
+            "        item i ON s.ItemID = i.ItemID" +
+            "        GROUP BY" +
+            "        c.CustomerID, c.CustomerName, c.CustomerEmail");
+
+    }
+
+    static findById(id) {
+        return db.execute("select * from customer where id = ?",
+            [id]);
+    }
+
     save() {
-        return db.execute( 'insert into customer (custName, custEmail) ' +
+        return db.execute('insert into customer (id, custName, custEmail) ' +
             'values (?, ?, ?)',
-            [this.CustomerName, this.CustomerEmail ]
+            [this.CustomerID, this.CustomerName, this.CustomerEmail]
         )
     }
-    static delete( id ) {
-        return db.execute( "delete from customer where id = ?",
-            [id]
-        )
-    }
-    static fetchAll(){
-        return db.execute( "select * from customer");
-    }
-    static findById( id ){
-        return db.execute( "select * from customer where id = ?",
-            [id] );
-    }
-    update ( id ){
-        return db.execute( "UPDATE customer SET custEmail = ?, custName= ?  WHERE id = ?",
-            [this.CustomerEmail, this.CustomerName, id ] );
+
+    update(id) {
+        return db.execute("UPDATE customer SET custEmail = ?, custName= ?  WHERE id = ?",
+            [this.CustomerEmail, this.CustomerName, id]);
     }
 }

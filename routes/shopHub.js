@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const mainContoller = require("../controllers/mainController")
+const mainController = require("../controllers/mainController")
 
-router.get( '/home', mainContoller.home );
-router.get( '/products', mainContoller.products);
-router.get( '/cust', mainContoller.cust);
-router.get( '/sales', mainContoller.sales);
+router.get( '/home', mainController.home );
+router.get( '/products', mainController.products);
+router.get( '/cust', mainController.cust);
+router.get( '/sales', mainController.sales);
+router.get('/addCust', mainController.getAddCustomer );
+router.get('/updateCust', mainController.getUpdateCustomer );
+router.post('/cust', mainController.postUpdateCustomer);
+
 module.exports = router;

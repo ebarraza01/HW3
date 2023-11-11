@@ -1,1 +1,21 @@
 include layouts/mainLayout
+.container.mt-5
+    div(style={ margin: '0 5% 5% 5%', padding: '2%'})
+        table.table.table-striped.border
+            thead
+                tr
+                    th.border.bg-info.text-light Product
+                    th.border.bg-info.text-light Total Sales
+
+            tbody
+                if !pList
+                    tr
+                        td
+                        td
+                else
+                    each p in pList
+                        tr
+                            td= p.ItemName
+                            td= p.TotalSales
+
+        button.ms-5(type='submit' class='btn btn-secondary') Insert New Product

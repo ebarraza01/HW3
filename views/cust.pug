@@ -1,1 +1,30 @@
 include layouts/mainLayout
+.container.mt-5
+    div(style={ margin: '0 5% 5% 5%', padding: '2%'})
+        table.table.table-striped.border
+            thead
+                tr
+                    th.border.bg-info.text-light Name
+                    th.border.bg-info.text-light Email
+                    th.border.bg-info.text-light Total Sales
+                    th.border.bg-info.text-light Options
+
+            tbody
+                if !cList
+                    tr
+                        td
+                        td
+                        td
+                        td
+
+                else
+                     each c in cList
+                         tr
+                             td= c.CustomerName
+                             td= c.CustomerEmail
+                             td= c.TotalSales
+                             td
+                                form( method='get' action='/updateCust' + c.id )
+                                    button( type='submit' class='btn btn-primary') Update
+        form(method='get' action='/addCust')
+            button.ms-5(type='submit' class='btn btn-secondary') Insert New Customer
