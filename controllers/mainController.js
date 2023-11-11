@@ -14,6 +14,7 @@ exports.products = (req, res, next) => {
             from: 'products'
         })
 }
+
 exports.sales = (req, res, next) => {
     // sales.findByMonth( sList => {
     //     res.render( 'sales', {
